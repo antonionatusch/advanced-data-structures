@@ -53,7 +53,23 @@ private:
 
 int main(int argc, char *argv[]) {
 
-  std::cout << "Hello World!" << std::endl;
+  struct TreeNode* r = new TreeNode;
+  struct TreeNode* init_left = new TreeNode;
+  struct TreeNode* init_right = new TreeNode;
+
+  r->data = 1;
+  init_left->data = 2;
+  init_right->data = 3;
+
+  auto bst = new BinaryTree(r, init_left, init_right);
+  std::cout << "PreorderTraversal: \n";
+  bst->PreorderTraversal(r);
+  std::cout << "\nInorderTraversal: \n";
+  bst->InorderTraversal(r);
+  std::cout << "\nPostorderTraversal: \n";
+  bst->PostorderTraversal(r);
+  std::cout<<"\n";
+
 
   return 0;
 }
