@@ -22,7 +22,30 @@ public:
     this->root->right = new_right;
   }
 
+  void PreorderTraversal(TreeNode *root) {
+    if (!root)
+      return;
+    std::cout << root->data << " ";
+    PreorderTraversal(root->left);
+    PreorderTraversal(root->right);
+  }
 
+  void InorderTraversal(TreeNode *root) {
+    if (!root)
+      return;
+
+    InorderTraversal(root->left);
+    std::cout << root->data << " ";
+    InorderTraversal(root->right);
+  }
+
+  void PostorderTraversal(TreeNode* root) {
+    if (!root)
+      return;
+    PostorderTraversal(root->left);
+    PostorderTraversal(root->left);
+    std::cout<< root->data << " ";
+  }
 
 private:
   TreeNode *root;
