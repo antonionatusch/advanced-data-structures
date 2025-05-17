@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 
 struct TreeNode {
   int data;
@@ -45,17 +46,46 @@ public:
     InOrderTraversal(r->right);
   }
 
+  void BreadthFirstSearch(TreeNode *r) {
+    if (!r)
+      return;
+
+    std::queue<TreeNode *> q;
+    q.push(r);
+
+    while (!q.empty()) {
+      TreeNode *current = q.front();
+      q.pop();
+      std::cout << current->data << " ";
+
+      if (current->left) {
+        q.push(current->left);
+      } else {
+        std::cout << "NULL ";
+      }
+
+      if (current->right) {
+        q.push(current->right);
+      } else {
+        std::cout << "NULL ";
+      }
+    }
+
+    std::cout << std::endl;
+  }
+
 private:
   TreeNode *root;
 };
 
 int main(int argc, char *argv[]) {
-  TreeNode* root = new TreeNode{30};
+  TreeNode *root = new TreeNode{30};
   auto bst = new BinarySearchTree();
   bst->Insert(root, 50);
-  bst->Insert(root, 80);
-  bst->Insert(root, 60);
+  bst->Insert(root, 20);
+  bst->Insert(root, 75);
   bst->InOrderTraversal(root);
+  bst->BreadthFirstSearch(root);
 
   return 0;
 }
